@@ -1,0 +1,19 @@
+{
+  "ProblemFilePath": "kroA200",
+  "DistanceBestKnownTour": 29368,
+  "RuntimeForBestKnown": 2250000,
+  "TimeForInitialSolution": 2000000,
+  
+  "FrequencyDistanceMatrixChange": 150000,
+  "ChangeDistanceMatrixXTimes": 30,
+  "MagnitudeOfChange": 0.1,
+  "CoordinateChangeCoefficient": 0.3,
+  "UseLastAsChangeBase": true,
+  "FractionRandomCities": 0,
+  
+  "InitiallyKnownCities": 0.5,
+  "FrequencyRevealCities": 150000,
+  "RevealCitiesXTimes": 12,
+
+  "RandomState": 559770570
+}
