@@ -1,0 +1,1 @@
+docker run --env INPUT_FILE=/root/tsps/test.tsp --env OUTPUT_FILE=/root/tsps/test.sol -v "C:/Users/Milena Lengauer/CodeRepos/FH/Master/Masterarbeit/master_thesis/code/docker/tsps:/root/tsps/" concorde
