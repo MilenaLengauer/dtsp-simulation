@@ -1,0 +1,133 @@
+﻿<Application x:Class="TSPSimulation.UserInterface.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TSPSimulation.UserInterface"
+             xmlns:viewModels="clr-namespace:TSPSimulation.UserInterface.ViewModels"
+             xmlns:viewModelsAnalyzeRuns="clr-namespace:TSPSimulation.UserInterface.ViewModels.AnalyzeRunsViewModels"
+             xmlns:viewModelsAnalyzeRunsNga="clr-namespace:TSPSimulation.UserInterface.ViewModels.AnalyzeRunsViewModels.NGA"
+             xmlns:viewModelsAnalyzeRunsAlps="clr-namespace:TSPSimulation.UserInterface.ViewModels.AnalyzeRunsViewModels.ALPS"
+             xmlns:viewModelsCompareRuns="clr-namespace:TSPSimulation.UserInterface.ViewModels.CompareRunsViewModels"
+             xmlns:views="clr-namespace:TSPSimulation.UserInterface.Views"
+             xmlns:viewsAnalyzeRuns="clr-namespace:TSPSimulation.UserInterface.Views.AnalyzeRunsViews"
+             xmlns:viewsAnalyzeRunsNga="clr-namespace:TSPSimulation.UserInterface.Views.AnalyzeRunsViews.NGA"
+             xmlns:viewsAnalyzeRunsAlps="clr-namespace:TSPSimulation.UserInterface.Views.AnalyzeRunsViews.ALPS"
+             xmlns:viewsCompareRuns="clr-namespace:TSPSimulation.UserInterface.Views.CompareRunsViews"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <DataTemplate DataType="{x:Type viewModels:CreateProblemViewModel}">
+                <views:CreateProblemView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModels:SimulationViewModel}">
+                <views:SimulationView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModels:ShowProblemViewModel}">
+                <views:ShowProblemView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModels:AlgorithmViewModel}">
+                <views:AlgorithmView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModels:RunsViewModel}">
+                <views:RunsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModels:CompareRunsViewModel}">
+                <views:CompareRunsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRuns:ResultTourViewModel}">
+                <viewsAnalyzeRuns:ResultTourView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRuns:FitnessPerGenerationViewModel}">
+                <viewsAnalyzeRuns:FitnessPerGenerationView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRuns:DiversityPerGenerationViewModel}">
+                <viewsAnalyzeRuns:DiversityPerGenerationView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRuns:DiversityHeatMapViewModel}">
+                <viewsAnalyzeRuns:DiversityHeatMapView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRuns:EdgeFrequenciesViewModel}">
+                <viewsAnalyzeRuns:EdgeFrequenciesView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRuns:EdgeFrequenciesBestKnownViewModel}">
+                <viewsAnalyzeRuns:EdgeFrequenciesBestKnownView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRuns:PeriodsViewModel}">
+                <viewsAnalyzeRuns:PeriodsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRuns:BestSolutionViewModel}">
+                <viewsAnalyzeRuns:BestSolutionView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRuns:RecoveryRateViewModel}">
+                <viewsAnalyzeRuns:RecoveryRateView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRuns:AlgorithmParametersViewModel}">
+                <viewsAnalyzeRuns:AlgorithmParametersView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRuns:ErrorViewModel}">
+                <viewsAnalyzeRuns:ErrorView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRunsNga:NeighborhoodDiversityViewModel}">
+                <viewsAnalyzeRunsNga:NeighborhoodDiversityView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRunsNga:NeighborhoodFitnessViewModel}">
+                <viewsAnalyzeRunsNga:NeighborhoodFitnessView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRunsNga:NeighborhoodsDiversityHeatMapViewModel}">
+                <viewsAnalyzeRunsNga:NeighborhoodsDiversityHeatMapView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRunsAlps:AgeHistogramViewModel}">
+                <viewsAnalyzeRunsAlps:AgeHistogramView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRunsAlps:AgeViewModel}">
+                <viewsAnalyzeRunsAlps:AgeView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRunsAlps:AgeLayerFitnessViewModel}">
+                <viewsAnalyzeRunsAlps:AgeLayerFitnessView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRunsAlps:LayerDiversityViewModel}">
+                <viewsAnalyzeRunsAlps:LayerDiversityView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsAnalyzeRunsAlps:LayersDiversityHeatMapViewModel}">
+                <viewsAnalyzeRunsAlps:LayersDiversityHeatMapView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsCompareRuns:ComparisonTableViewModel}">
+                <viewsCompareRuns:ComparisonTableView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsCompareRuns:GenerationMetricsViewModel}">
+                <viewsCompareRuns:GenerationMetricsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelsCompareRuns:RecoveryRateViewModel}">
+                <viewsCompareRuns:RecoveryRateView/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

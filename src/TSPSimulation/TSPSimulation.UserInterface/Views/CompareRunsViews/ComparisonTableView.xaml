@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="TSPSimulation.UserInterface.Views.CompareRunsViews.ComparisonTableView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TSPSimulation.UserInterface.Views.CompareRunsViews"
+             xmlns:viewModels="clr-namespace:TSPSimulation.UserInterface.ViewModels.CompareRunsViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             d:DataContext="{d:DesignInstance viewModels:ComparisonTableViewModel}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ComboBox Grid.Row="0" ItemsSource="{Binding AvailableMetrics}" SelectedItem="{Binding SelectedMetric}"></ComboBox>
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Data}" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=GroupName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Count" Binding="{Binding Path=Count}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Min" Binding="{Binding Path=Min, StringFormat=N4}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Max" Binding="{Binding Path=Max, StringFormat=N4}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Avg" Binding="{Binding Path=Avg, StringFormat=N4}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Std. Dev" Binding="{Binding Path=StandardDev, StringFormat=N4}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Median" Binding="{Binding Path=Median, StringFormat=N4}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="30.0.1" />
+    <PackageReference Include="Serilog" Version="3.0.1" />
+    <PackageReference Include="SimSharp" Version="3.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TSPSimulation.Algorithms\TSPSimulation.Algorithms.csproj" />
+    <ProjectReference Include="..\TSPSimulation.ProblemDefinition.Static\TSPSimulation.ProblemDefinition.Static.csproj" />
+    <ProjectReference Include="..\TSPSimulation.ProblemDefinition\TSPSimulation.ProblemDefinition.csproj" />
+  </ItemGroup>
+
+</Project>

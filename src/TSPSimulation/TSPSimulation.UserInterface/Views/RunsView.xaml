@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="TSPSimulation.UserInterface.Views.RunsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TSPSimulation.UserInterface.Views"
+             xmlns:viewModels="clr-namespace:TSPSimulation.UserInterface.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             d:DataContext="{d:DesignInstance viewModels:RunsViewModel}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <ListBox Grid.Row="0" ItemsSource="{Binding RunModel.Solutions}" SelectedItem="{Binding SelectedSolution}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding Name}"></Label>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <!--Button Grid.Row="1" Content="Export Selected Run" Command="{Binding ExportRunCommand}"></Button-->
+
+        </Grid>
+        
+
+        <TabControl Grid.Column="1">
+            <TabItem Header="Algorithm">
+                <ContentControl Content="{Binding AlgorithmParametersViewModel}"/>
+            </TabItem>
+            <TabItem Header="Result">
+                <ContentControl Content="{Binding ResultTourViewModel}"/>
+            </TabItem>
+            <TabItem Header="Periods">
+                <ContentControl Content="{Binding PeriodsViewModel}"/>
+            </TabItem>
+            <TabItem Header="Best Solution">
+                <ContentControl Content="{Binding BestSolutionViewModel}"/>
+            </TabItem>
+            <TabItem Header="Fitness">
+                <ContentControl Content="{Binding FitnessPerGenerationViewModel}"/>
+            </TabItem>
+            <TabItem Header="Error">
+                <ContentControl Content="{Binding ErrorViewModel}"/>
+            </TabItem>
+            <TabItem Header="Diversity">
+                <ContentControl Content="{Binding DiversityPerGenerationViewModel}"/>
+            </TabItem>
+            <TabItem Header="Diversity Heat Map">
+                <ContentControl Content="{Binding DiversityHeatMapViewModel}"/>
+            </TabItem>
+            <TabItem Header="Edge Frequencies">
+                <ContentControl Content="{Binding EdgeFrequenciesViewModel}"/>
+            </TabItem>
+            <TabItem Header="Edge Frequencies - Optimum">
+                <ContentControl Content="{Binding EdgeFrequenciesBestKnownViewModel}"/>
+            </TabItem>
+            <TabItem Header="Recovery">
+                <ContentControl Content="{Binding RecoveryRateViewModel}"/>
+            </TabItem>
+            <TabItem Header="NGA - Fitness">
+                <ContentControl Content="{Binding NeighborhoodFitnessViewModel}"/>
+            </TabItem>
+            <TabItem Header="NGA - Diversity">
+                <ContentControl Content="{Binding NeighborhoodDiversityViewModel}"/>
+            </TabItem>
+            <TabItem Header="NGA - Diversity Heat Map">
+                <ContentControl Content="{Binding NeighborhoodsDiversityHeatMapViewModel}"/>
+            </TabItem>
+            <TabItem Header="ALPS - Fitness">
+                <ContentControl Content="{Binding AgeLayerFitnessViewModel}"/>
+            </TabItem>
+            <TabItem Header="ALPS - Age">
+                <ContentControl Content="{Binding AgeViewModel}"/>
+            </TabItem>
+            <TabItem Header="ALPS - Age Histogram">
+                <ContentControl Content="{Binding AgeHistogramViewModel}"/>
+            </TabItem>
+            <TabItem Header="ALPS - Diversity">
+                <ContentControl Content="{Binding LayerDiversityViewModel}"/>
+            </TabItem>
+            <TabItem Header="ALPS - Diversity Heat Map">
+                <ContentControl Content="{Binding LayersDiversityHeatMapViewModel}"/>
+            </TabItem>
+        </TabControl>
+        
+            
+    </Grid>
+</UserControl>
