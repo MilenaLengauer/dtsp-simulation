@@ -30,6 +30,7 @@
                     <DataGridTextColumn Header="End" Binding="{Binding EndGeneration}" />
                     <DataGridTextColumn Header="Problem Size" Binding="{Binding Problem.ProblemSize}" />
                     <DataGridTextColumn Header="Optimum" Binding="{Binding Path=Problem.OptimalSolution.Fitness, StringFormat=N2}" />
+                    <DataGridTextColumn Header="Worst" Binding="{Binding Path=Problem.WorstSolution.Fitness, StringFormat=N2}" />
                     <DataGridTextColumn Header="Reached Fitness" Binding="{Binding Path=FinalSolution.Fitness, StringFormat=N2}" />
                     <DataGridTextColumn Header="Stability" Binding="{Binding Path=Stability, StringFormat=N4}" />
                 </DataGrid.Columns>

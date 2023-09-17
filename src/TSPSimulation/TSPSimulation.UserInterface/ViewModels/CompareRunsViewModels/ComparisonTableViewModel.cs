@@ -62,6 +62,13 @@ namespace TSPSimulation.UserInterface.ViewModels.CompareRunsViewModels
                 case RunMetric.AbsoluteRecoveryRate:
                     Data = reportsGrouped.Select((g, i) => new RunGroupAnalysis($"Group{g.Key}", g.Select(s => s.AlgorithmReport.AbsoluteRecoveryRate).ToList())).ToList();
                     break;
+                case RunMetric.Accuracy:
+                    Data = reportsGrouped.Select((g, i) => new RunGroupAnalysis($"Group{g.Key}", g.Select(s => s.AlgorithmReport.Accuracy).ToList())).ToList();
+                    break;
+                case RunMetric.AccuracyInitializingExcluded:
+                    Data = reportsGrouped.Select((g, i) => new RunGroupAnalysis($"Group{g.Key}", g.Select(s => s.AlgorithmReport.AccuracyInitializingExcluded).ToList())).ToList();
+                    break;
+
             }
         }
 

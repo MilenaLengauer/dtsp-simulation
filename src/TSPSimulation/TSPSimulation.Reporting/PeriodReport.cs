@@ -52,6 +52,13 @@ namespace TSPSimulation.Reporting
             get => errorsInPercent ??= GetErrorsInPercent();
         }
 
+        private IEnumerable<(int evaluations, double accuracy)> accuracies;
+        [JsonIgnore]
+        public IEnumerable<(int evaluations, double accuracy)> Accuracies
+        {
+            get => accuracies ??= GetAccuracies();
+        }
+
         private double? recoveryRate;
         [JsonIgnore]
         public double RecoveryRate
@@ -104,6 +111,44 @@ namespace TSPSimulation.Reporting
             }
             Problem.OptimalSolution = new TSPSolution(optimalPath, Problem);
             Problem.OptimalSolution.Evaluate();
+        }
+
+        public void CalculateWorstSolution()
+        {
+            int[] worstPath;
+            if(Problem.ProblemSize > 1)
+            {
+                worstPath = new int[Problem.Cities.Length];
+                List<int> cities = new List<int>();
+                cities.AddRange(Problem.Cities);
+                int currentCity = Problem.Start;
+                for(int i = 0; i < worstPath.Length; i++)
+                {
+                    //find most distant city
+                    double maxDist = 0;
+                    int maxDistCity = -1;
+                    for(int j = 0; j < cities.Count; j++)
+                    {
+                        double dist = Problem.DistanceMatrix[currentCity, cities[j]];
+                        if (dist > maxDist)
+                        {
+                            maxDist = dist;
+                            maxDistCity = cities[j];
+                        }
+                    }
+                    cities.Remove(maxDistCity);
+                    worstPath[i] = maxDistCity;
+                    currentCity = worstPath[i];
+                }
+
+            } else
+            {
+                List<int> path = new List<int>();
+                path.AddRange(Problem.Cities);
+                worstPath = path.ToArray();
+            }
+            Problem.WorstSolution = new TSPSolution(worstPath, Problem);
+            Problem.WorstSolution.Evaluate();
         }
 
         internal void ReportNewGeneration(GenerationResult generation, bool performDiversityCalculations, bool performEdgeFrequencyCalculations)
@@ -171,6 +216,26 @@ namespace TSPSimulation.Reporting
                 
             }
             return errors;
+        }
+
+        public IEnumerable<(int, double)> GetAccuracies()
+        {
+            double min = Problem.OptimalSolution.Fitness;
+            double max = Problem.WorstSolution.Fitness;
+            double diff = max - min;
+            IList<(int, double)> accuracies = new List<(int, double)>();
+            foreach (var generation in Generations)
+            {
+                if(diff < TOLERANCE)
+                {
+                    accuracies.Add((generation.Evaluations, 0));
+                } else
+                {
+                    accuracies.Add((generation.Evaluations, (max - generation.BestFitnessInPeriod) / diff));
+                }
+            }
+            return accuracies;
+
         }
 
         private double GetRecoveryRate()

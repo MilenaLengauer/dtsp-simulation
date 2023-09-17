@@ -9,6 +9,7 @@ namespace TSPSimulation.Reporting
     public enum GenerationMetric
     {
         Error,
+        Accuracy,
         Fitness
     }
 }

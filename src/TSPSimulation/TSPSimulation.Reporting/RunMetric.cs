@@ -10,6 +10,8 @@ namespace TSPSimulation.Reporting
     {
         Error,
         ErrorInitializingExcluded,
+        Accuracy,
+        AccuracyInitializingExcluded,
         FinalTourLength,
         Stability,
         RecoveryRate,

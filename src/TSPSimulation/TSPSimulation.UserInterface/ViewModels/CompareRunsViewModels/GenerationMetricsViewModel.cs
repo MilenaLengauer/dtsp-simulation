@@ -100,6 +100,9 @@ namespace TSPSimulation.UserInterface.ViewModels.CompareRunsViewModels
                         case GenerationMetric.Fitness:
                             data = solution.AlgorithmReport.GetGenerationReports().Select(g => (g.Evaluations, g.BestFitnessInPeriod));
                             break;
+                        case GenerationMetric.Accuracy:
+                            data = solution.AlgorithmReport.GetAccuracies();
+                            break;
                     }
                     
                     foreach((int x, double y) in data)

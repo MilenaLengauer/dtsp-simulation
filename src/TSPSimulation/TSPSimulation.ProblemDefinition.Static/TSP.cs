@@ -11,6 +11,7 @@ namespace TSPSimulation.ProblemDefinition.Static
         public int[] Cities { get; }
         public Coordinate[] Coordinates { get; }
         public TSPSolution? OptimalSolution { get; set; }
+        public TSPSolution? WorstSolution { get; set; }
 
         public TSP(double[,] distanceMatrix, int start, int end,  int[] cities, Coordinate[] coordinates)
         {

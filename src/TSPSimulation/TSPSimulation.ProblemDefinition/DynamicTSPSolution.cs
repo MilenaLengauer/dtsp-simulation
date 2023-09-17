@@ -72,9 +72,15 @@ namespace TSPSimulation.ProblemDefinition
             {
                 period.AlgorithmReport = AlgorithmReport;
                 var solution = period.Problem.OptimalSolution;
+                period.CalculateWorstSolution();
+                var worstSolution = period.Problem.WorstSolution;
                 if(solution != null)
                 {
                     solution.Problem = period.Problem;
+                }
+                if(worstSolution != null)
+                {
+                    worstSolution.Problem = period.Problem;
                 }
                 foreach(var generation in period.Generations)
                 {

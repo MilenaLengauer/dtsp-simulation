@@ -44,6 +44,20 @@ namespace TSPSimulation.Reporting
             get => errorInPercentInitializingExcluded ??= GetErrorInPercentInitializingExcluded();
         }
 
+        private double? accuracy;
+        [JsonIgnore]
+        public double Accuracy
+        {
+            get => accuracy ??= GetAccuracy();
+        }
+
+        private double? accuracyInitializingExcluded;
+        [JsonIgnore]
+        public double AccuracyInitializingExcluded
+        {
+            get => accuracyInitializingExcluded ??= GetAccuracyInitializingExcluded();
+        }
+
         private double? recoveryRate;
         [JsonIgnore]
         public double RecoveryRate
@@ -91,6 +105,7 @@ namespace TSPSimulation.Reporting
             }
             currentPeriod = new PeriodReport(Periods.Count, problem, Name, this);
             currentPeriod.CalculateOptimalSolution();
+            currentPeriod.CalculateWorstSolution();
             Periods.Add(currentPeriod);
 
             if(generation != null)
@@ -130,6 +145,16 @@ namespace TSPSimulation.Reporting
             return errors;
         }
 
+        public IList<(int evaluations, double accuracy)> GetAccuracies()
+        {
+            List<(int, double)> accuracies = new List<(int, double)>();
+            foreach (var period in Periods)
+            {
+                accuracies.AddRange(period.Accuracies);
+            }
+            return accuracies;
+        }
+
         public IEnumerable<GenerationReport> GenerationReportsWithDiversity()
         {
             return Periods.SelectMany(p => p.Generations).Where(g => g.PopulationDiversity != null);
@@ -165,6 +190,16 @@ namespace TSPSimulation.Reporting
         private double GetErrorInPercentInitializingExcluded()
         {
             return GetErrorsInPercent().Where(p => p.evaluations > EvaluationsForInitializing).Select(p => p.error).Average();
+        }
+
+        private double GetAccuracy()
+        {
+            return GetAccuracies().Select(p => p.accuracy).Average();
+        }
+
+        private double GetAccuracyInitializingExcluded()
+        {
+            return GetAccuracies().Where(p => p.evaluations > EvaluationsForInitializing).Select(p => p.accuracy).Average();
         }
 
         private double GetStability()

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TSPSimulation.UserInterface.Models
 {
-    public record CsvExportAlgorithmResult(string Algorithm, double Error, double Stability, double RecoveryRate, double AbsoluteRecoveryRate);
+    public record CsvExportAlgorithmResult(string Algorithm, double Error, double Stability, double RecoveryRate, double AbsoluteRecoveryRate, double Accuracy);
 
     public class CsvExportResult
     {
@@ -22,7 +22,8 @@ namespace TSPSimulation.UserInterface.Models
                     solution.AlgorithmReport.ErrorInPercentInitializingExcluded,
                     solution.AlgorithmReport.Stability,
                     solution.AlgorithmReport.RecoveryRate,
-                    solution.AlgorithmReport.AbsoluteRecoveryRate
+                    solution.AlgorithmReport.AbsoluteRecoveryRate,
+                    solution.AlgorithmReport.AccuracyInitializingExcluded
                     ));
             }
         }

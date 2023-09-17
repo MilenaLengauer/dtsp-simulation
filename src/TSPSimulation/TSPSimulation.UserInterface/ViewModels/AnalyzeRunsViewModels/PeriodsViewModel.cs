@@ -27,6 +27,7 @@ namespace TSPSimulation.UserInterface.ViewModels.AnalyzeRunsViewModels
         }
         public double Error { get; private set; }
         public double ErrorInitializingExcluded { get; private set; }
+
         public double Stability { get; private set; }
 
         private PlotModel? model;
